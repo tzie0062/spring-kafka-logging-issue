@@ -14,7 +14,7 @@ public class KafkaEventListener {
 	// just for testing
 	private boolean dltEventReceived;
 
-	@KafkaListener(id = "kafkaEventListener", topics = "${kafka.topic.in}", groupId = "${spring.application.name}")
+	@KafkaListener(id = DemoApplication.KAFKA_EVENT_LISTENER, topics = "${kafka.topic.in}", groupId = "${spring.application.name}")
 	public void handleEvent(@Payload String event) {
 		log.info("Received event: {}", event);
 		if ("bar".equalsIgnoreCase(event)) {

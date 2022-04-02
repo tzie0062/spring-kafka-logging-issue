@@ -12,7 +12,7 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.test.context.EmbeddedKafka;
 
 @SpringBootTest
-@EmbeddedKafka(topics = { "topic" }, brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
+@EmbeddedKafka(brokerProperties = { "listeners=PLAINTEXT://localhost:9092", "port=9092" })
 class DemoApplicationTests {
 	@Autowired
 	private KafkaTemplate<String, String> kafkaTemplate;

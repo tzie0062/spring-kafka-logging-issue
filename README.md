@@ -25,7 +25,8 @@ org.springframework.kafka.listener.ListenerExecutionFailedException: Listener fa
 
 Following a suggestions
 from [StackOverflow](https://stackoverflow.com/questions/71705876/combining-blocking-and-non-blocking-retries-in-spring-kafka), the
-listenerContainer's log-level can be configured. However the `DefaultErrorHandler` is using a hardcoded level:
+`ListenerContainer`'s log-level can be configured. However, the `DefaultErrorHandler` is using a hard-coded level:
+
 ```java
-this.logger.error(ex, () -> "Recovery of record...
+this.logger.error(ex,()->"Recovery of record...
 ```

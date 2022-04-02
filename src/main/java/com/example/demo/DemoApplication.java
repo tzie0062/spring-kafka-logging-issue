@@ -26,11 +26,13 @@ import lombok.extern.slf4j.Slf4j;
 @SpringBootApplication
 public class DemoApplication {
 
+	public static final String KAFKA_EVENT_LISTENER = "kafkaEventListener";
+
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean("kafkaEventListener")
+	@Bean(KAFKA_EVENT_LISTENER)
 	public KafkaEventListener kafkaEventListener() {
 		return new KafkaEventListener();
 	}
@@ -48,7 +50,7 @@ public class DemoApplication {
 			.suffixTopicsWithIndexValues()
 			.dltSuffix("-" + appName + ".dlq")
 			.includeTopic(topicToInclude)
-			.dltHandlerMethod("kafkaEventListener", "handleDltEvent")
+			.dltHandlerMethod(KAFKA_EVENT_LISTENER, "handleDltEvent")
 			.create(template);
 	}
 
